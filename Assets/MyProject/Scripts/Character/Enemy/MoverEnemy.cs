@@ -8,8 +8,8 @@ public class MoverEnemy : MonoBehaviour
     [SerializeField] private LayerMask _layer;
     [SerializeField] private float _speed;
     [SerializeField] private float _distance;
-
-    private Player _player;
+    [SerializeField] private Player _player;
+    
     private Animator _animator;
     private SpriteRenderer _sprite;
     private Transform[] _points;
@@ -20,7 +20,6 @@ public class MoverEnemy : MonoBehaviour
     private void Start()
     {
         _points = new Transform[_path.childCount];
-        _player = FindAnyObjectByType<Player>();
         _animator = GetComponent<Animator>();
         _sprite = GetComponent<SpriteRenderer>();
 
