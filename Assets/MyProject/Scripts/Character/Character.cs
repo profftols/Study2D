@@ -14,7 +14,7 @@ public abstract class Character : MonoBehaviour
         health = new Health(maxHealth);
     }
 
-    public void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage)
     {
         if (0 >= health.HP)
         {

@@ -7,7 +7,6 @@ public class Enemy : Character
         if (other.gameObject.TryGetComponent(out Player player))
         {
             player.TakeDamage(attacker.Damage);
-            player.ChangeHealthBar();
         }
     }
 }

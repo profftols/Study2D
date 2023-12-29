@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Scrollbar))]
-public class UIHealthSlow : UIBar
+public class UIHealthSlow : HealthView
 {
     private Coroutine _timerChanger;
     private Scrollbar _bar;
@@ -14,18 +14,8 @@ public class UIHealthSlow : UIBar
     {
         _bar = GetComponent<Scrollbar>();
     }
-
-    private void OnEnable()
-    {
-        OnBarChanged += ChangeNumber;
-    }
-
-    private void OnDisable()
-    {
-        OnBarChanged -= ChangeNumber;
-    }
     
-    private void ChangeNumber(float hpCorrect, float maxHp)
+    public override void ChangeNumber(float hpCorrect, float maxHp)
     {
         if (_timerChanger != null)
         {

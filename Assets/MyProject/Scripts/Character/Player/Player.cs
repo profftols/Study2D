@@ -1,13 +1,9 @@
+using System;
 using UnityEngine;
 
 public class Player : Character
 {
-    private UIBar _ui;
-
-    private void Start()
-    {
-        _ui = FindAnyObjectByType<UIBar>();
-    }
+    public event Action<float, float> HealthChanged;
     
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -20,11 +16,12 @@ public class Player : Character
     public void ToHeal(float heal)
     {
         health.ToHeal(heal, maxHealth);
-        ChangeHealthBar();
+        HealthChanged?.Invoke(health.HP, maxHealth);
     }
 
-    public void ChangeHealthBar()
+    public override void TakeDamage(float damage)
     {
-        _ui.HealthBar(health.HP, maxHealth);
+        base.TakeDamage(damage);
+        HealthChanged?.Invoke(health.HP, maxHealth);
     }
 }
