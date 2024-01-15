@@ -1,18 +1,19 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class HealthView : MonoBehaviour
 {
-    [SerializeField] protected Player _player;
+    [SerializeField] protected Character _character;
 
     public virtual void ChangeNumber(float hpCorrect, float maxHp) { }
 
     protected void OnEnable()
     {
-        _player.HealthChanged += ChangeNumber;
+        _character.HealthChanged += ChangeNumber;
     }
 
     protected void OnDisable()
     {
-        _player.HealthChanged -= ChangeNumber;
+        _character.HealthChanged -= ChangeNumber;
     }
 }

@@ -3,6 +3,7 @@ using UnityEngine;
 public class Pizza : MonoBehaviour
 {
     private float _heal = 30f;
+    private int a => 2+a;
     
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -12,4 +13,6 @@ public class Pizza : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private int IntChager(int a) => a + 1;
 }

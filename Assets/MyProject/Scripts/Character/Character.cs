@@ -1,9 +1,11 @@
+using System;
 using UnityEngine;
 
 public abstract class Character : MonoBehaviour
 {
     [SerializeField] protected float maxHealth;
     [SerializeField] protected float damage;
+    public event Action<float, float> HealthChanged;
     
     protected Attacker attacker;
     protected Health health;
@@ -14,7 +16,7 @@ public abstract class Character : MonoBehaviour
         health = new Health(maxHealth);
     }
 
-    public virtual void TakeDamage(float damage)
+    public void TakeDamage(float damage)
     {
         if (0 >= health.HP)
         {
@@ -22,5 +24,12 @@ public abstract class Character : MonoBehaviour
         }
         
         health.ToDamage(damage);
+        HealthChanged?.Invoke(health.HP, maxHealth);
+    }
+
+    public void ToHeal(float heal)
+    {
+        health.ToHeal(heal, maxHealth);
+        HealthChanged?.Invoke(health.HP, maxHealth);
     }
 }
