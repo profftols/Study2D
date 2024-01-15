@@ -9,7 +9,7 @@ public class Pizza : MonoBehaviour
     {
         if (other.TryGetComponent(out Player player))
         {
-            player.ToHeal(_heal);
+            player.Heal(_heal);
             Destroy(gameObject);
         }
     }

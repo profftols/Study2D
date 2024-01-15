@@ -5,6 +5,7 @@ public abstract class Character : MonoBehaviour
 {
     [SerializeField] protected float maxHealth;
     [SerializeField] protected float damage;
+    
     public event Action<float, float> HealthChanged;
     
     protected Attacker attacker;
@@ -27,7 +28,7 @@ public abstract class Character : MonoBehaviour
         HealthChanged?.Invoke(health.HP, maxHealth);
     }
 
-    public void ToHeal(float heal)
+    public void Heal(float heal)
     {
         health.ToHeal(heal, maxHealth);
         HealthChanged?.Invoke(health.HP, maxHealth);
