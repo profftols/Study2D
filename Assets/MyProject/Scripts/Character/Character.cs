@@ -1,36 +1,37 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public abstract class Character : MonoBehaviour
 {
-    [SerializeField] protected float maxHealth;
-    [SerializeField] protected float damage;
+    [SerializeField] protected float MaxHealth;
+    [SerializeField] protected float Damage;
     
     public event Action<float, float> HealthChanged;
     
-    protected Attacker attacker;
-    protected Health health;
+    protected Attacker Attacker;
+    protected Health Health;
     
     private void Awake()
     {
-        attacker = new Attacker(damage);
-        health = new Health(maxHealth);
+        Attacker = new Attacker(Damage);
+        Health = new Health(MaxHealth);
     }
 
     public void TakeDamage(float damage)
     {
-        if (0 >= health.HP)
+        if (0 >= Health.HP)
         {
             Destroy(gameObject);
         }
         
-        health.ToDamage(damage);
-        HealthChanged?.Invoke(health.HP, maxHealth);
+        Health.ToDamage(damage);
+        HealthChanged?.Invoke(Health.HP, MaxHealth);
     }
 
     public void Heal(float heal)
     {
-        health.ToHeal(heal, maxHealth);
-        HealthChanged?.Invoke(health.HP, maxHealth);
+        Health.ToHeal(heal, MaxHealth);
+        HealthChanged?.Invoke(Health.HP, MaxHealth);
     }
 }

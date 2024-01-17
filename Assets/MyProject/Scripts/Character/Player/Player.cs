@@ -7,7 +7,7 @@ public class Player : Character
     {
         if (other.gameObject.TryGetComponent(out Enemy enemy))
         {
-            enemy.TakeDamage(attacker.Damage);
+            enemy.TakeDamage(Attacker.Damage);
         }
     }
 }

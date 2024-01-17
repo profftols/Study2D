@@ -175,7 +175,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 607ca977c3ddf5d48a30f6c8023e1905, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 1
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -197,8 +197,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e51cc692556d99447ab1eaee8f4e0fd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 2
-  damage: 2
+  MaxHealth: 20
+  Damage: 10
 --- !u!114 &3002034282619120502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,11 +228,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 794476936997930615, guid: bf10217ffbb8bbb4589fcafcfdca2671, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 794476936997930615, guid: bf10217ffbb8bbb4589fcafcfdca2671, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 968778783762688276, guid: bf10217ffbb8bbb4589fcafcfdca2671, type: 3}
       propertyPath: m_IsActive
@@ -254,6 +254,10 @@ PrefabInstance:
       propertyPath: m_RenderMode
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5155401377136985299, guid: bf10217ffbb8bbb4589fcafcfdca2671, type: 3}
+      propertyPath: Character
+      value: 
+      objectReference: {fileID: 6864893808910915352}
     - target: {fileID: 5155401377136985299, guid: bf10217ffbb8bbb4589fcafcfdca2671, type: 3}
       propertyPath: _character
       value: 
