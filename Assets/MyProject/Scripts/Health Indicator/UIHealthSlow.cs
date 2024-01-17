@@ -2,17 +2,17 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Scrollbar))]
+[RequireComponent(typeof(Image))]
 public class UIHealthSlow : HealthView
 {
     private Coroutine _timerChanger;
-    private Scrollbar _bar;
+    private Image _bar;
     private float _step = 0.01f;
-    private float _stepTime = 0.05f;
+    private float _stepTime = 0.025f;
 
     private void Awake()
     {
-        _bar = GetComponent<Scrollbar>();
+        _bar = GetComponent<Image>();
     }
     
     public override void ChangeNumber(float hpCorrect, float maxHp)
@@ -30,10 +30,10 @@ public class UIHealthSlow : HealthView
         var wait = new WaitForSeconds(_stepTime);
         float result = 0f;
 
-        while (_bar.size != result)
+        while (_bar.fillAmount != result)
         {
-            result = _bar.size;
-            _bar.size = Mathf.MoveTowards(_bar.size, hpCorrect / maxHp, _step);
+            result = _bar.fillAmount;
+            _bar.fillAmount = Mathf.MoveTowards(_bar.fillAmount, hpCorrect / maxHp, _step);
             yield return wait;
         }
         

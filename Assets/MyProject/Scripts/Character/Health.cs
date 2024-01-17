@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class Health
 {
     public float HP { get; private set; }
@@ -9,7 +7,7 @@ public class Health
         HP = hp;
     }
     
-    public void ToHeal(float heal, float maxHP)
+    public void Heal(float heal, float maxHP)
     {
         if (HP + heal > maxHP)
         {
@@ -21,7 +19,7 @@ public class Health
         }
     }
 
-    public void ToDamage(float damage)
+    public void TakeDamage(float damage)
     {
         HP -= damage;
     }

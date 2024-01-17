@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public abstract class Character : MonoBehaviour
 {
@@ -25,13 +24,17 @@ public abstract class Character : MonoBehaviour
             Destroy(gameObject);
         }
         
-        Health.ToDamage(damage);
+        Health.TakeDamage(damage);
         HealthChanged?.Invoke(Health.HP, MaxHealth);
     }
 
-    public void Heal(float heal)
+    public void Heal(Pizza heal)
     {
-        Health.ToHeal(heal, MaxHealth);
-        HealthChanged?.Invoke(Health.HP, MaxHealth);
+        if (MaxHealth > Health.HP)
+        {
+            Health.Heal(heal.Heal(), MaxHealth);
+            HealthChanged?.Invoke(Health.HP, MaxHealth);
+            Destroy(heal.gameObject);
+        }
     }
 }

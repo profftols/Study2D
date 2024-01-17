@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] private Transform _point;
+    [SerializeField] private Transform _points;
     [SerializeField] private Pizza _pizzaSpawn;
 
     private Transform[] _paths;
@@ -12,21 +12,21 @@ public class Spawner : MonoBehaviour
     
     private void Start()
     {
-        _paths = new Transform[_point.childCount];
+        _paths = new Transform[_points.childCount];
 
-        for (int i = 0; i < _point.childCount; i++)
+        for (int i = 0; i < _points.childCount; i++)
         {
-            _paths[i] = _point.GetChild(i);
+            _paths[i] = _points.GetChild(i);
         }
 
-        StartCoroutine(SpawnTimer());
+        StartCoroutine(Spawning());
     }
     
-    private IEnumerator SpawnTimer()
+    private IEnumerator Spawning()
     {
         var wait = new WaitForSeconds(_waitTime);
         
-        while (_currentPoint < _point.childCount)
+        while (_currentPoint < _points.childCount)
         {
             var path = _paths[_currentPoint];
             _currentPoint++;
@@ -35,7 +35,7 @@ public class Spawner : MonoBehaviour
 
             if (_paths.Length == _currentPoint)
             {
-                StopCoroutine(SpawnTimer());
+                StopCoroutine(Spawning());
             }
             
             yield return wait;
