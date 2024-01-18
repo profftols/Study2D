@@ -8,7 +8,7 @@ public class Pizza : MonoBehaviour
     {
         if (other.TryGetComponent(out Player player))
         {
-            player.Heal(this);
+            player.HealPizza(this);
         }
     }
 

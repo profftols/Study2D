@@ -28,7 +28,7 @@ public abstract class Character : MonoBehaviour
         HealthChanged?.Invoke(Health.HP, MaxHealth);
     }
 
-    public void Heal(Pizza heal)
+    public void HealPizza(Pizza heal)
     {
         if (MaxHealth > Health.HP)
         {
@@ -36,5 +36,11 @@ public abstract class Character : MonoBehaviour
             HealthChanged?.Invoke(Health.HP, MaxHealth);
             Destroy(heal.gameObject);
         }
+    }
+
+    public void Heal(float heal)
+    {
+        Health.Heal(heal, MaxHealth);
+        HealthChanged?.Invoke(Health.HP, MaxHealth);
     }
 }
