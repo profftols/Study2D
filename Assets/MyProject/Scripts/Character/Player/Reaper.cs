@@ -36,6 +36,4 @@ public class Reaper : SpellBook
         _timer = 0;
         _spell = null;
     }
-    
-    
 }

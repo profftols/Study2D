@@ -2,8 +2,11 @@ using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class Mover : MonoBehaviour
 {
+    const string Ground = "Ground";
+    
     [SerializeField] private float _speedMove;
     [SerializeField] private LayerMask _ground;
     [SerializeField] private int _maxJump;
@@ -39,7 +42,7 @@ public class Mover : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        if (other.gameObject.layer == LayerMask.NameToLayer(Ground))
         {
             _countJump = 0;
         }
